@@ -28,6 +28,7 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   private ImageView[][] cards;
   MemoryLogic logic;
   TextView title;
+  int score = 0;
   public MemoryFragment() {
     // Required empty public constructor
   }
@@ -72,7 +73,8 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
     }
     title = binding.textView;
     logic = new MemoryLogic();
-    title.setText(String.format("Score: %d",logic.getScore()));
+    title.setText(String.format("Score: %d",score));
+    //title.setText(String.format("Score: %d",logic.getScore()));
     return binding.getRoot();
   }
 
@@ -176,22 +178,26 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
     }
     boolean isPair = false;
     logic.showCard(x, y);
-    title.setText(String.format("Score: %d",logic.getScore()));
+    title.setText(String.format("Score: %d",score));
+    //title.setText(String.format("Score: %d",logic.getScore()));
     cards[x][y].setOnClickListener(null);
     int drawableId = getDrawableId(x,y);
     cards[x][y].setImageResource(drawableId);
     int[] otherShownCard = logic.getOtherShownCard(x, y);
     if (logic.getShownCount()==2){
+      score++;
       if (logic.isPair(x,y, otherShownCard[0], otherShownCard[1])){
         isPair = true;
         logic.permaShowCard(x, y);
         logic.permaShowCard(otherShownCard[0],otherShownCard[1]);
-        title.setText(String.format("Score: %d",logic.getScore()));
+        //title.setText(String.format("Score: %d",logic.getScore()));
+        title.setText(String.format("Score: %d",score));
       }
       if (!isPair){
         timer(x,y, otherShownCard);
       }
     }
+    title.setText(String.format("Score: %d",score));
     if (logic.isDone()){
       title.setText(R.string.win);
     }
