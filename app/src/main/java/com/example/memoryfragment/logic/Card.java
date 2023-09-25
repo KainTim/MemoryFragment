@@ -25,10 +25,6 @@ public class Card {
     return imgSource;
   }
 
-  public void setImgSource(String imgSource) {
-    this.imgSource = imgSource;
-  }
-
   public Card(String imgSource) {
     shown=false;
     permashown=false;
