@@ -1,5 +1,7 @@
 package com.example.memoryfragment.logic;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,21 +9,20 @@ import java.util.Map;
 import java.util.Random;
 
 public class MemoryLogic {
-  private int score;
   private Card[][] board = new Card[4][4];
-  private Map<String,Integer> imageStringsMap;
+  private Map<String, Integer> imageStringsMap;
   private List<String> imageString;
 
   {
-    imageStringsMap = new  HashMap<>();
-    imageStringsMap.put("img",0);
-    imageStringsMap.put("img2",0);
-    imageStringsMap.put("mug",0);
-    imageStringsMap.put("img_1",0);
-    imageStringsMap.put("img_7",0);
-    imageStringsMap.put("img_4",0);
-    imageStringsMap.put("img_5",0);
-    imageStringsMap.put("img_6",0);
+    imageStringsMap = new HashMap<>();
+    imageStringsMap.put("img", 0);
+    imageStringsMap.put("img2", 0);
+    imageStringsMap.put("mug", 0);
+    imageStringsMap.put("img_1", 0);
+    imageStringsMap.put("img_7", 0);
+    imageStringsMap.put("img_4", 0);
+    imageStringsMap.put("img_5", 0);
+    imageStringsMap.put("img_6", 0);
     imageString = new ArrayList<>();
     imageString.add("img");
     imageString.add("img2");
@@ -39,24 +40,84 @@ public class MemoryLogic {
         board[i][j] = generateCard();
       }
     }
-    score = 0;
   }
 
-  private Card generateCard(){
+  private Card generateCard() {
     Random random = new Random();
     Card card;
-    while (true){
+    while (true) {
       int randInt = random.nextInt(imageString.size());
       switch (imageStringsMap.get(imageString.get(randInt))) {
         case 0:
           card = new Card(imageString.get(randInt));
-          imageStringsMap.put(imageString.get(randInt),1);
+          imageStringsMap.put(imageString.get(randInt), 1);
           return card;
         case 1:
           card = new Card(imageString.get(randInt));
-          imageStringsMap.put(imageString.get(randInt),2);
+          imageStringsMap.put(imageString.get(randInt), 2);
           return card;
       }
     }
+  }
+
+  public String getImageResourceStringFromCoordinate(int x, int y) {
+    return board[x][y].getImgSource();
+  }
+
+  public void showCard(int x, int y) {
+    board[x][y].setShown(true);
+    Log.d("Logic", String.format("%d",getShownCount()));
+  }
+
+  public void hideCard(int x, int y) {
+    board[x][y].setShown(false);
+  }
+  public int getShownCount(){
+    int count = 0;
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+        if(board[i][j].isShown()) count++;
+      }
+    }
+    return count;
+  }
+  public int[]getOtherShownCard(int x, int y){
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+        if(board[i][j].isShown()&&(i!=x||j!=y)) return new int[]{i,j};
+      }
+    }
+    return null;
+  }
+
+  public boolean isPair(int x, int y, int x2, int y2) {
+    if (board[x][y].getImgSource().equals(board[x2][y2].getImgSource())&&board[x][y].isShown()&&board[x2][y2].isShown()){
+      if (x==x2&&y==y2){
+        return false;
+      }
+      Log.d("Logic", String.format("had a pair, %d %d %d %d",x,y,x2,y2));
+      return true;
+    }
+    else return false;
+  }
+  public void permaShowCard(int x,int y){
+    board[x][y].setPermashown(true);
+    board[x][y].setShown(false);
+  }
+  public boolean isDone(){
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+        if (!board[i][j].isPermashown()) return false;
+      }
+    }
+    return true;
+  }
+  public int getScore(){
+    int score = 0;
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+        if (board[i][j].isPermashown()) score++;
+      }
+    }return score;
   }
 }
