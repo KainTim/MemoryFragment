@@ -153,26 +153,6 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   }
 //https://stackoverflow.com/questions/15874117/how-to-set-delay-in-android
   private void showCard(int x, int y) {
-    //int result;
-    //int[] otherShownCard;
-    //if ((result=logic.showCard(x,y))==-1){
-    //  otherShownCard = logic.getOtherShownCard(x, y);
-    //  timer(x,y,otherShownCard);
-    //  otherShownCard = logic.getOtherShownCard(x, y);
-    //}
-    //cards[x][y].setOnClickListener(null);
-    //int drawableId = getDrawableId(x,y);
-    //cards[x][y].setImageResource(drawableId);
-    //if(result<=2) return;
-    //Log.d("UI","got to Here1");
-    //Log.d("UI",String.format("%d",result));
-    //otherShownCard = logic.getOtherShownCard(x, y);
-    //if (logic.isPair(x,y,otherShownCard[0],otherShownCard[1])){
-    //  logic.permaShowCard(x, y);
-    //  logic.permaShowCard(otherShownCard[0],otherShownCard[1]);
-    //  return;
-    //}
-    //timer(x, y, otherShownCard);
     if (logic.getShownCount()>=2){
       return;
     }
@@ -223,7 +203,6 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
       }
     }.start();
   }
-
 
   //https://stackoverflow.com/questions/54735793/how-to-get-the-id-of-an-image-from-a-string-array
   private int getDrawableId(int x, int y) {
