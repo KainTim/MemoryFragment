@@ -24,15 +24,15 @@ public class MemoryLogic {
     Collections.shuffle(imageString);
     Card card;
     while (true) {
-      int randInt = random.nextInt(imageString.size());
-      switch (imageStringsMap.get(imageString.get(randInt))) {
+      Collections.shuffle(imageString);
+      switch (imageStringsMap.get(imageString.get(0))) {
         case 0:
-          card = new Card(imageString.get(randInt));
-          imageStringsMap.put(imageString.get(randInt), 1);
+          card = new Card(imageString.get(0));
+          imageStringsMap.put(imageString.get(0), 1);
           return card;
         case 1:
-          card = new Card(imageString.get(randInt));
-          imageStringsMap.put(imageString.get(randInt), 2);
+          card = new Card(imageString.get(0));
+          imageStringsMap.put(imageString.get(0), 2);
           return card;
       }
     }
