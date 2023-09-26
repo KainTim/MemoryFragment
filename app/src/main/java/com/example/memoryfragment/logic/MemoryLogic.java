@@ -3,6 +3,7 @@ package com.example.memoryfragment.logic;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class MemoryLogic {
 
   private Card generateCard() {
     Random random = new Random();
+    Collections.shuffle(imageString);
     Card card;
     while (true) {
       int randInt = random.nextInt(imageString.size());
