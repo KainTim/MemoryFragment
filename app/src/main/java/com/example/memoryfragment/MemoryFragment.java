@@ -1,5 +1,6 @@
 package com.example.memoryfragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -163,6 +164,7 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
     cards[x][y].setOnClickListener(null);
     int drawableId = getDrawableId(x,y);
     cards[x][y].setImageResource(drawableId);
+    cards[x][y].setBackgroundColor(Color.GRAY);
     int[] otherShownCard = logic.getOtherShownCard(x, y);
     if (logic.getShownCount()==2){
       score++;
@@ -170,8 +172,10 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
         isPair = true;
         logic.permaShowCard(x, y);
         logic.permaShowCard(otherShownCard[0],otherShownCard[1]);
+        cards[otherShownCard[0]][otherShownCard[1]].setBackgroundColor(Color.GREEN);
         //title.setText(String.format("Score: %d",logic.getScore()));
         title.setText(String.format(getString(R.string.score),score));
+        cards[x][y].setBackgroundColor(Color.GREEN);
       }
       if (!isPair){
         timer(x,y, otherShownCard);
@@ -191,11 +195,12 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
         cards[otherShownCard[0]][otherShownCard[1]].setImageResource(R.drawable.ic_launcher_background);
         setOnClickListener(otherShownCard[0], otherShownCard[1]);
         logic.hideCard(otherShownCard[0], otherShownCard[1]);
-
+        cards[otherShownCard[0]][otherShownCard[1]].setBackgroundColor(Color.TRANSPARENT);
         Log.d("UI","hid other Card");
         cards[x][y].setImageResource(R.drawable.ic_launcher_background);
         setOnClickListener(x, y);
         logic.hideCard(x, y);
+        cards[x][y].setBackgroundColor(Color.TRANSPARENT);
         Log.d("UI","hid this card");
       }
 
