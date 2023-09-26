@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,8 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   MemoryLogic logic;
   TextView title;
   int score = 0;
+  boolean timerInterrupt;
+  Button resetButton;
   public MemoryFragment() {
     // Required empty public constructor
   }
@@ -72,6 +75,8 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
             card.setImageResource(R.drawable.ic_launcher_background);
         }
     }
+    resetButton = binding.button;
+    resetButton.setOnClickListener(this);
     title = binding.textView;
     logic = new MemoryLogic();
     title.setText(String.format(getString(R.string.score),score));
@@ -87,6 +92,10 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
+    if (v.getId()==resetButton.getId()){
+      logic.resetLogic();
+      resetboard();
+    }
     if (v.getId()==cards[0][0].getId()){
       showCard(0,0);
 
@@ -152,7 +161,21 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
 
     }
   }
-//https://stackoverflow.com/questions/15874117/how-to-set-delay-in-android
+
+  private void resetboard() {
+    for (ImageView[] row : cards) {
+        for (ImageView view : row) {
+            view.setBackgroundColor(Color.TRANSPARENT);
+            view.setImageResource(R.drawable.ic_launcher_background);
+          view.setOnClickListener(this);
+        }
+    }
+    score=0;
+    title.setText(String.format(getString(R.string.score),score));
+    timerInterrupt = true;
+  }
+
+  //https://stackoverflow.com/questions/15874117/how-to-set-delay-in-android
   private void showCard(int x, int y) {
     if (logic.getShownCount()>=2){
       return;
@@ -189,8 +212,10 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   }
 
   private void timer(int x, int y, int[] otherShownCard) {
+    timerInterrupt = false;
     CountDownTimer timer = new CountDownTimer(750, 1000) {
       public void onFinish() {
+        if (timerInterrupt) return;
         Log.d("UI","got to Here2");
         cards[otherShownCard[0]][otherShownCard[1]].setImageResource(R.drawable.ic_launcher_background);
         setOnClickListener(otherShownCard[0], otherShownCard[1]);

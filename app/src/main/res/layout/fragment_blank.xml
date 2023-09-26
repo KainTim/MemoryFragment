@@ -20,11 +20,11 @@
 
     <LinearLayout
         android:id="@+id/Layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:weightSum="4"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -191,5 +191,18 @@
                 android:layout_weight="1"
                 android:src="@drawable/img" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/reset"
+        app:layout_constraintTop_toBottomOf="@id/Layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="683dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
