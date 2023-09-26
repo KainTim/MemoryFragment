@@ -20,18 +20,18 @@ public class MemoryLogic {
     imageStringsMap.put("mug", 0);
     imageStringsMap.put("img_1", 0);
     imageStringsMap.put("img_7", 0);
-    imageStringsMap.put("img_4", 0);
     imageStringsMap.put("img_5", 0);
     imageStringsMap.put("img_6", 0);
+    imageStringsMap.put("img_8", 0);
     imageString = new ArrayList<>();
     imageString.add("img");
     imageString.add("img2");
     imageString.add("mug");
     imageString.add("img_1");
     imageString.add("img_7");
-    imageString.add("img_4");
     imageString.add("img_5");
     imageString.add("img_6");
+    imageString.add("img_8");
   }
 
   public MemoryLogic() {
