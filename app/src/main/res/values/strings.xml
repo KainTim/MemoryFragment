@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MemoryFragment</string>
-    <string name="win">You Win!</string>
+    <string name="win">You Win! Score: %d</string>
+    <string name="score">Score: %d</string>
 </resources>
