@@ -15,21 +15,21 @@ public class MemoryLogic {
 
   {
     imageStringsMap = new HashMap<>();
-    imageStringsMap.put("img", 0);
-    imageStringsMap.put("img2", 0);
-    imageStringsMap.put("mug", 0);
-    imageStringsMap.put("img_1", 0);
+    imageStringsMap.put("img_13", 0);//notWendt
+    imageStringsMap.put("img_9", 0);
+    imageStringsMap.put("img_12", 0);
+    imageStringsMap.put("img_11", 0);
     imageStringsMap.put("img_7", 0);
-    imageStringsMap.put("img_5", 0);
+    imageStringsMap.put("img_10", 0);
     imageStringsMap.put("img_6", 0);
     imageStringsMap.put("img_8", 0);
     imageString = new ArrayList<>();
-    imageString.add("img");
-    imageString.add("img2");
-    imageString.add("mug");
-    imageString.add("img_1");
+    imageString.add("img_13");
+    imageString.add("img_9");
+    imageString.add("img_12");
+    imageString.add("img_11");
     imageString.add("img_7");
-    imageString.add("img_5");
+    imageString.add("img_10");
     imageString.add("img_6");
     imageString.add("img_8");
   }
