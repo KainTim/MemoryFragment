@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -33,6 +35,7 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   int score = 0;
   boolean timerInterrupt;
   Button resetButton;
+  private MainViewModel viewModel;
   public MemoryFragment() {
     // Required empty public constructor
   }
@@ -50,8 +53,10 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+
     binding = FragmentBlankBinding.inflate(inflater,container,false);
-// Initialize Card Array
+    viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+    // Initialize Card Array
     cards =  new ImageView[4][4];
     cards[0][0] = binding.imageView2;
     cards[0][1] = binding.imageView3;
@@ -93,8 +98,12 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     if (v.getId()==resetButton.getId()){
+      boolean done = logic.isDone();
       logic.resetLogic();
       resetboard();
+      if (done){
+        viewModel.showWelcomeScreen();
+      }
     }
     if (v.getId()==cards[0][0].getId()){
       showCard(0,0);
@@ -207,6 +216,7 @@ public class MemoryFragment extends Fragment implements View.OnClickListener {
     title.setText(String.format(getString(R.string.score),score));
     if (logic.isDone()){
       title.setText(String.format(getString(R.string.win),score));
+      resetButton.setText(R.string.returnHome);
     }
 
   }

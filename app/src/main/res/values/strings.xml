@@ -1,6 +1,20 @@
 <resources>
-    <string name="app_name">MemoryFragment</string>
+    <string name="app_name">MemoryWendt</string>
     <string name="win">You Win! Score: %d</string>
     <string name="score">Score: %d</string>
     <string name="reset">Reset</string>
+    <string name="playMemory">Play Memory</string>
+    <string name="playTicTacToe">Play Tic Tac Toe</string>
+    <string name="returnHome">Return to Home</string>
+    <string name="title">Tic Tac Toe</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="player1sym">X</string>
+    <string name="player2sym">O</string>
+    <string name="player1win">Player 1 Wins!</string>
+    <string name="player2win">Player 2 Wins!</string>
+    <string name="tie">Tie!</string>
+    <string name="start">Start</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
