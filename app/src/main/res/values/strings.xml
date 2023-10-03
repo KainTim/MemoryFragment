@@ -4,9 +4,11 @@
     <string name="score">Score: %d</string>
     <string name="reset">Reset</string>
     <string name="playMemory">Play Memory</string>
+    <string name="play4InARow">Play 4 In a Row</string>
     <string name="playTicTacToe">Play Tic Tac Toe</string>
     <string name="returnHome">Return to Home</string>
     <string name="title">Tic Tac Toe</string>
+    <string name="title4inARow">4 In A Row</string>
     <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
     <string name="player1sym">X</string>

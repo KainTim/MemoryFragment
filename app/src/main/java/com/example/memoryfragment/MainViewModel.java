@@ -8,6 +8,7 @@ public class MainViewModel extends ViewModel {
   public static final  int SHOW_MEMORY = 1;
   public static final  int SHOW_TIC_TAC_TOE = 2;
   public static final  int SHOW_WELCOME_SCREEN = 3;
+  public static final  int SHOW_4_IN_A_ROW = 4;
   private MutableLiveData<Integer> _state = new MutableLiveData<>(SHOW_WELCOME_SCREEN);
   public LiveData<Integer> state =_state;
 
@@ -19,5 +20,8 @@ public class MainViewModel extends ViewModel {
   }
   public void showWelcomeScreen(){
     _state.postValue(SHOW_WELCOME_SCREEN);
+  }
+  public void Show4InARow(){
+    _state.postValue(SHOW_4_IN_A_ROW);
   }
 }

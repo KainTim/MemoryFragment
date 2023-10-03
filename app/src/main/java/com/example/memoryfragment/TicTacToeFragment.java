@@ -69,7 +69,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
     startButton.setBackgroundColor(Color.rgb(241, 81, 82));
     //Initialize Logic
-    logic = new TicTacToeLogic();
+    logic = new TicTacToeLogic(3,3);
     tvTitle.setText(logic.isPlayer1()?R.string.player1 : R.string.player2);
     return binding.getRoot();
   }
@@ -80,7 +80,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
       if (returnHome){
         viewModel.showWelcomeScreen();
       }
-      logic = new TicTacToeLogic();      tvTitle.setText(logic.isPlayer1()?R.string.player1 : R.string.player2);
+      logic = new TicTacToeLogic(3,3);      tvTitle.setText(logic.isPlayer1()?R.string.player1 : R.string.player2);
       resetBoard();
       return;
     }

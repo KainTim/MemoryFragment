@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.layout,TicTacToeFragment.newInstance());
       } else if (state == MainViewModel.SHOW_WELCOME_SCREEN) {
         fragmentTransaction.replace(R.id.layout, WelcomeScreenFragment.newInstance());
+      }else if (state == MainViewModel.SHOW_4_IN_A_ROW) {
+        fragmentTransaction.replace(R.id.layout, gameFragment.newInstance());
       }
       fragmentTransaction.commit();
     });

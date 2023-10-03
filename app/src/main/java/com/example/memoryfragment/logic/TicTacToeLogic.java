@@ -4,9 +4,10 @@ import android.util.Log;
 
 public class TicTacToeLogic {
   private boolean isPlayer1 = true;
-  private int[][] playField = new int[3][3];
+  private int[][] playField;
 
-  public TicTacToeLogic() {
+  public TicTacToeLogic(int sizeX, int sizeY) {
+    playField = new int[sizeX][sizeY];
   }
 
   public int[] getLastPlace() {
@@ -80,7 +81,7 @@ public class TicTacToeLogic {
     return 0;
   }
   public int checkVertical(){
-    int[][] tmpfield = new int[3][3];
+    int[][] tmpfield = new int[playField.length][playField[0].length];
     for (int i = 0; i < playField.length; i++) {
       for (int j = 0; j < playField[0].length; j++) {
         tmpfield[j][i] = playField[i][j];
@@ -89,7 +90,7 @@ public class TicTacToeLogic {
     return checkHorizontal(tmpfield);
   }
   public int checkBothDiagonals(){
-    int[][] tmpfield = new int[3][3];
+    int[][] tmpfield = new int[playField.length][playField[0].length];
     for (int i = 0; i < playField.length; i++) {
       for (int j = 0; j < playField[0].length; j++) {
         tmpfield[i][playField.length-1-j] = playField[i][j];
@@ -110,7 +111,7 @@ public class TicTacToeLogic {
 
   public void resetBoard() {
     isPlayer1 = true;
-    playField = new int[3][3];
+    playField = new int[playField.length][playField[0].length];
 
   }
 }

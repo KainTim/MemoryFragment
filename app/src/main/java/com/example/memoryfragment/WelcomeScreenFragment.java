@@ -41,6 +41,7 @@ public class WelcomeScreenFragment extends Fragment implements View.OnClickListe
     viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     binding.button2.setOnClickListener(this);
     binding.button3.setOnClickListener(this);
+    binding.button4.setOnClickListener(this);
     return binding.getRoot();
   }
 
@@ -50,6 +51,8 @@ public class WelcomeScreenFragment extends Fragment implements View.OnClickListe
       viewModel.showTicTacToe();
     }else if (v.getId()==binding.button3.getId()){
       viewModel.showMemory();
+    }else if (v.getId()==binding.button4.getId()){
+      viewModel.Show4InARow();
     }
   }
 }
