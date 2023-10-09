@@ -14,12 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.memoryfragment.databinding.FragmentGameBinding;
-import com.example.memoryfragment.logic.TicTacToeLogic;
+import com.example.memoryfragment.logic.FourInARowLogic;
 
 public class gameFragment extends Fragment implements View.OnClickListener {
   private FragmentGameBinding binding;
   private Button[][] buttons = new Button[4][4];
-  private TicTacToeLogic logic;
+  private FourInARowLogic logic;
   private TextView title;
   private Button startButton;
   private boolean returnHome;
@@ -180,7 +180,7 @@ public class gameFragment extends Fragment implements View.OnClickListener {
 
   public void resetBoard(){
     returnHome = false;
-    logic= new TicTacToeLogic(4,4);
+    logic= new FourInARowLogic(4,4);
     for (Button[] row : buttons) {
       for (Button button : row) {
         button.setOnClickListener(this);
