@@ -141,7 +141,9 @@ public class gameFragment extends Fragment implements View.OnClickListener {
     }
   }
   public void clickedButton(int x, int y){
-    logic.spaceClicked(x,y);
+    int[] spaceClicked = logic.spaceClicked(x, y);
+    x=spaceClicked[0];
+    y=spaceClicked[1];
     if (logic.isPlayer1()){
       buttons[x][y].setBackgroundColor(Color.RED);
       buttons[x][y].setText(R.string.player1sym);

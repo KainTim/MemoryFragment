@@ -24,13 +24,20 @@ public class FourInARowLogic {
     return true;
   }
   private final int[] lastPlace = new int[2];
-  public void spaceClicked(int row, int column) {
+  public int[] spaceClicked(int row, int column) {
+    Log.d("FourInARow",String.format("%d,%d",row,column));
+    for (int i = 0; i<playField.length;i++){
+      if (playField[i][column]==0) row = i;
+      Log.d("FourInARow",String.format("%d,%d",i,column));
+    }
+
     lastPlace[0] =row;
     lastPlace[1] =column;
     playField[row][column] = isPlayer1?1:2;
     Log.d("GameLogic",String.format("set Row %d Column %d to Player %d",row,column,isPlayer1?1:2));
     Log.d("GameLogic",String.format("checkWin %d",checkWin()));
     isPlayer1 = !isPlayer1;
+    return new int[]{row,column};
   }
   public int checkWin(){
     int tmpResults = 0;
