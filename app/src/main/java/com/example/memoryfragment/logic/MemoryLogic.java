@@ -100,7 +100,7 @@ public class MemoryLogic {
   }
   public void resetLogic(){
     imageStringsMap = new HashMap<>();
-    imageStringsMap.put("img_13", 0);//notWendt
+    imageStringsMap.put("img_13", 0);
     imageStringsMap.put("img_9", 0);
     imageStringsMap.put("img_12", 0);
     imageStringsMap.put("img_11", 0);
